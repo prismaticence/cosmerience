@@ -1,0 +1,26 @@
+<div class="container">
+  <h2>Edit profile</h2>
+  <% if !@user.avatar.blank? %>
+      <p>Profile Photo</p>
+      <p><%= image_tag @user.avatar.url(:medium) %></p>
+  <% end %>
+
+  <%= form_for @user do |f| %>
+
+    <div class="control-group">
+      <p><%= f.label :avatar, "Upload a profile photo" %></p>
+      <p><%= f.file_field :avatar %></p>
+    </div>
+
+    <div class="control-group">
+      <p><%= f.label :password, "Change Password" %></p>
+      <p><%= f.password_field :password %></p>
+    </div>
+
+    <div class="control-group">
+      <p><%= f.label :email, "Change Email address" %></p>
+      <p><%= f.text_field :email %></p>
+    </div>
+    <p><%= f.submit "Update profile" %></p>
+  <% end %>
+</div>

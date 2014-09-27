@@ -1,0 +1,51 @@
+<div class="container">
+
+	<h2>Write a review</h2>
+	<%= form_for @review do |f| %>
+		<div class="control-group">
+		<p><%= f.label :treatment_id, "Treatment (select one)" %></p>
+		<p><%= f.select(:treatment_id, options_for_treatment) %></p>
+		<div>
+
+		<div class="control-group">
+		<p><%= f.label :recommend, "Was it worth it?" %></p>
+		<p><%= f.select(:recommend, options_for_select([['Yes', true], ['No', false]])) %></p>
+		</div>
+
+		<div class="control-group">
+		<p><%= f.label :title, "Review Title" %></p>
+		<p><%= f.text_field :title, size:"100" %></p>
+		</div>
+
+		<div class="control-group">
+		<p><%= f.label :body, "Your review" %></p>
+		<p><%= f.text_area :body, size:"100x10" %></p>
+		</div>
+
+		<div class="control-group">
+		<p><%= f.label :cost, "Cost (in dollars)" %></p>
+		<p><%= f.text_field :cost %></p>
+		</div>
+
+		<div class="control-group">
+		<p><%= f.label :doctor, "Which doctor performed your procedure?" %></p>
+		<p><%= f.text_field :doctor, size:"60" %></p>
+		</div>
+
+		<div class="control-group">
+		<p><%= f.label :clinic_location, "Where was it performed?" %></p>
+		<p><%= f.text_field :clinic_location, size:"60" %></p>
+		</div>
+
+		<div class="control-group">
+		<p><%= f.label :doctor_review, "Review your doctor" %></p>
+		<p><%= f.text_area :doctor_review, size:"100x10" %></p>
+		</div>
+
+		<%= f.label :photos, "Upload a photo" %>
+      <%= f.file_field :photos, multiple: true %>
+	
+
+		<%= f.submit "Submit", class: "btn btn-success" %>
+	<% end %>
+</div>

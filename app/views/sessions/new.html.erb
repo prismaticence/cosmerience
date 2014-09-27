@@ -1,0 +1,20 @@
+<div class="container">
+
+	<h2>Log in</h2>
+
+	<%= form_tag("/login", method: "POST") do %>
+		<div class="control-group">
+			<%= label_tag(:username, "Username") %>
+			<%= text_field_tag(:username) %>
+		</div>
+
+		<div class="control-group">
+			<%= label_tag(:password, "Password") %>
+			<%= password_field_tag(:password) %>
+		</div>
+
+		<%= submit_tag("Log in", class:"btn btn-primary") %>
+	<% end %>
+  <br\>
+    <p>Not registered yet?  Sign up <%= link_to "here", register_path %> for free</p>
+</div>

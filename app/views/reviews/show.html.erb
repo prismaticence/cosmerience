@@ -1,0 +1,49 @@
+	<div class="container">	
+    <h2> <%= link_to @review.treatment.name, treatment_path(@review.treatment) %></h2>
+
+		<div class= "row">
+			<div class="col-md-2 text-center">
+			<% if @review.recommend %>
+				<h5>Worth it</h5>
+				<br\>
+				<img src="http://healthtulip.com/doctors/thumbup.png"></img>
+			<%else %>
+				<h5>Not worth it</h5>
+				<br\>
+				<img src="http://healthtulip.com/doctors/thumbsdown.png"</img>
+			<% end %>
+			</div>
+			
+			<div class = "well col-md-8">
+				<h3><%= link_to @review.title, review_path(@review) %></h3>
+				<p><%= daymonthyear(@review.created_at) %></p>
+				<p>By <%= link_to @review.user.username, user_path(@review.user) %>
+				Cost : $<%= @review.cost %></p>
+				<% if !@review.photos.blank? %>
+					<p><%= image_tag @review.photos.url(:medium) %></p>
+				<% end %>
+
+				<%= @review.body %>
+		
+			</div>
+		</div>
+
+		<h3>Comments</h3>
+
+
+		<% @review.comments.each do |comment| %>
+			<div class="well col-md-8">
+				<h5><%= image_tag comment.user.avatar.url(:thumb) %>   <%= link_to comment.user.username, user_path(comment.user) %> | <%= daymonthyear(comment.created_at) %></h5>
+				<p><%= comment.body %></p>
+			</div>
+		<% end %>
+
+		<div class="row col-md-8">
+
+		<h3>Post a new comment </h3>
+		<%= form_tag(review_comments_path(@review), method: "POST") do %>
+			<p><%= text_area_tag(:body, nil, cols: 120) %></p>
+			<%= submit_tag("Submit", class: "btn btn-success") %>
+		<% end %>
+		</div>
+	</div>

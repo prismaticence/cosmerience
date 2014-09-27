@@ -1,0 +1,30 @@
+<div class='container'>
+	<h2>Register</h2>
+	<h4>Join the community for the Asian face, skin and body today.</h4>
+	<%= render '/shared/errors', obj: @user %>
+
+	<%= form_for @user do |f| %>
+		<div class="control-group">
+			<p><%= f.label :username, "Choose a Username" %></p>
+			<p><%= f.text_field :username %></p>
+		</div>
+
+		<div class="control-group">
+			<p><%= f.label :password, "Create Password" %></p>
+			<p><%= f.password_field :password %></p>
+		</div>
+
+	   <div class="control-group">
+	     <p><%= f.label :password_confirmation, "Retype Password" %></p>
+			 <p><%= f.password_field :password_confirmation %></p>
+		</div>
+
+	  
+		<div class="control-group">
+			<p><%= f.label :email, "Email address" %></p>
+			<p><%= f.text_field :email %></p>
+		</div>
+		<p>Already registered?  <%= link_to "Sign in", login_path %> here</p>
+		<p><%= f.submit "Join now", class: "btn btn-primary btn-lg" %></p>
+	<% end %>
+</div>

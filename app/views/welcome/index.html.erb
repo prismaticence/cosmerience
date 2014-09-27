@@ -1,0 +1,12 @@
+<img src="http://healthtulip.com/wp-content/healthtulipcovergirl3.jpg"></img>
+<div class="container">
+	<h4>Popular Treatments</h4>
+	<% @treatments.each do |treatment| %>
+		<div class="col-md-3">
+			<img src="<%= treatment.photo_url %>"></img>
+			<h3><%= link_to treatment.name, treatment_path(treatment) %></h3>
+			<h4><%= treatment.description %></h4>
+			<br\>
+		</div>
+	<% end %>
+</div>

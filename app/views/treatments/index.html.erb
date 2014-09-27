@@ -1,0 +1,5 @@
+<h2>All treatments</h2>
+<% @treatment.each do |treatment| %>
+<h3><%= link_to treatment.name, treatment_path(treatment) %></h3>
+	<h4><%= treatment.description %></h4>
+<% end %>

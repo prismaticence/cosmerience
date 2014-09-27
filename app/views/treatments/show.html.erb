@@ -1,0 +1,35 @@
+<div class="container">
+	<img src="<%= @treatment.photo_url %>"></img>
+	<h3><%= @treatment.name %></h3>
+	<h4><%= @treatment.description %></h4>
+	<br\>
+	<h3>Reviews from the community </h3>
+	<% @treatment.reviews.each do |review| %>
+	<div class= "row">
+		<div class="col-md-2 text-center">
+			<% if review.recommend %>
+				<h5>Worth it</h5>
+				<br\>
+				<img src="http://healthtulip.com/doctors/thumbup.png"></img>
+			<%else %>
+				<h5>Not worth it</h5>
+				<br\>
+				<img src="http://healthtulip.com/doctors/thumbsdown.png"</img>
+			<% end %>
+		</div>
+
+		<div class = "col-md-8 well">
+			<h4><%= link_to review.title, review_path(review) %></h4>
+			<p>By <%= link_to review.user.username, user_path(review.user) %> |
+			Cost : $<%= review.cost %></p>
+
+			<%= review.body %>
+			<% if !review.photos.blank? %>			
+				<p><%= image_tag review.photos.url(:thumb) %></p>
+			<% end %>
+			<p><%= link_to "#{review.comments.size} comments", review_path(review) %></p>
+		</div>
+	</div>
+
+	<% end %>
+</div>
