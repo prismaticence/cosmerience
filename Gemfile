@@ -10,7 +10,9 @@ gem "twitter-bootstrap-rails"
 gem 'bcrypt-ruby'
 gem 'pry', '~> 0.10.1'
 gem "paperclip", "~> 4.2"
-gem 'sqlite3'
+group :development, :test do
+  gem 'sqlite3', :require => 'sqlite3'
+end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
