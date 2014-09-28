@@ -1,7 +1,16 @@
 class CommentsController < ApplicationController
+	
+	def new
+
+		@review = Review.find_by slug: params[:review_id]
+		@comment = Comment.new(parent_id: params[:parent_id])
+
+	end
+
 	def create
 		if logged_in?
-			comment = Comment.create(body: params[:body], user_id: current_user.id, review_id: params[:review_id])
+			commentedreview = Review.find_by slug: params[:review_id]
+			comment = Comment.create(body: params[:body], user_id: current_user.id, review_id: commentedreview.id, parent_id: params[:parent_id])
 
 			if comment.save
 				flash[:notice] = "Your comment was added!"

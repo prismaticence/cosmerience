@@ -1,0 +1,9 @@
+comment
+
+
+			<div class="well col-md-8">
+				<h5><%= image_tag comment.user.avatar.url(:thumb) %>   <%= link_to comment.user.username, user_path(comment.user) %> | <%= daymonthyear(comment.created_at) %></h5>
+				<p><%= comment.body %></p>
+				<%= link_to "Reply", new_review_comment_path(@review, parent_id: comment) %>
+			</div>
+	

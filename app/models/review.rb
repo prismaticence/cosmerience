@@ -1,7 +1,7 @@
 class Review < ActiveRecord::Base
 	belongs_to :user
 	belongs_to :treatment
-	has_many :comments
+	has_many :comments, dependent: :destroy
 	before_create :set_slug
 
 	has_attached_file :photos, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/images/:style/missing.png"
@@ -34,7 +34,7 @@ class Review < ActiveRecord::Base
   	  end
   end
 
-  
+
   def to_param
   	self.slug
   end

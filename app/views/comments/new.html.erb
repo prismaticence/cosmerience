@@ -1,0 +1,9 @@
+<h2>New Comment</h2>
+<%= @comment.parent.body %>
+
+<h3>Post a new comment </h3>
+	<%= form_tag(review_comments_path(@review), method: "POST") do %>
+			<%= hidden_field_tag(:parent_id, @comment.parent_id) %>
+			<p><%= text_area_tag(:body, nil, cols: 120) %></p>
+			<%= submit_tag("Submit", class: "btn btn-success") %>
+	<% end %>

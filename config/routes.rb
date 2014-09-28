@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :users
   resources :treatments
   resources :reviews do
-    resources :comments, only: [:create]
+    resources :comments, only: [:new, :create]
   end
   resources :categories
 
