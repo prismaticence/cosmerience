@@ -14,4 +14,24 @@ class ApplicationController < ActionController::Base
   	!!current_user
   end
 
+  def set_slug
+    self.slug = generate_slug
+  end
+
+  def generate_slug
+      str = self.username
+      str = str.gsub /\W/, "-"
+      str = str.downcase 
+
+      count = 2
+
+      slugger = self.class.find_by slug: str
+
+      while slugger 
+        str = str + "-" + count.to_s
+        slugger = self.class.find_by slug: str
+        count += 1
+      end
+      return slugger
+  end
  end

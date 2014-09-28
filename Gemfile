@@ -10,6 +10,7 @@ gem "twitter-bootstrap-rails"
 gem 'bcrypt-ruby'
 gem 'pry', '~> 0.10.1'
 gem "paperclip", "~> 4.2"
+gem 'ancestry'
 group :development, :test do
   gem 'sqlite3', :require => 'sqlite3'
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140926052729) do
+ActiveRecord::Schema.define(version: 20140928002413) do
 
   create_table "comments", force: true do |t|
     t.text     "body",       limit: 255
@@ -19,7 +19,10 @@ ActiveRecord::Schema.define(version: 20140926052729) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "ancestry"
   end
+
+  add_index "comments", ["ancestry"], name: "index_comments_on_ancestry"
 
   create_table "reviews", force: true do |t|
     t.string   "title"
@@ -37,6 +40,7 @@ ActiveRecord::Schema.define(version: 20140926052729) do
     t.string   "photos_content_type"
     t.integer  "photos_file_size"
     t.datetime "photos_updated_at"
+    t.string   "slug"
   end
 
   create_table "treatments", force: true do |t|
@@ -45,6 +49,7 @@ ActiveRecord::Schema.define(version: 20140926052729) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "photo_url"
+    t.string   "slug"
   end
 
   create_table "users", force: true do |t|
@@ -57,6 +62,7 @@ ActiveRecord::Schema.define(version: 20140926052729) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "slug"
   end
 
 end

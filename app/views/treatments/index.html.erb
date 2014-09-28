@@ -1,5 +1,19 @@
-<h2>All treatments</h2>
-<% @treatment.each do |treatment| %>
-<h3><%= link_to treatment.name, treatment_path(treatment) %></h3>
-	<h4><%= treatment.description %></h4>
-<% end %>
+<div class="container">
+
+	<h2>All treatments</h2>
+	<% @treatment.each do |treatment| %>
+		<div class="row">
+		<div class="col-md-3">
+		<%= link_to treatment_path(treatment) do %>
+			<img src="<%= treatment.photo_url %>" height="150	" width="150"></img>
+			<% end %>
+		</div>
+		<div class="col-md-6">
+		<h3><%= link_to treatment.name, treatment_path(treatment) %></h3>
+		<h4><%= treatment.description %></h4>
+		</div>
+		</div>
+	<% end %>
+</div>
+<br>
+<br>

@@ -4,6 +4,6 @@ class TreatmentsController < ApplicationController
 	end
 
 	def show
-		@treatment = Treatment.find(params[:id])
+		@treatment = Treatment.find_by slug: params[:id]
 	end
 end
